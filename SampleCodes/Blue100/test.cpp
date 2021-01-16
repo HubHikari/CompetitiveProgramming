@@ -1,31 +1,56 @@
+/* dijkstra(G,s,dis,prev)
+    入力：グラフ G, 開始点 s, 距離を格納する dis, 最短経路の前の点を記録するprev
+    計算量：O(|E|log|V|)
+    副作用：dis, prevが書き換えられる
+*/
 
-#include <iostream>
-#include <vector>
-#include <queue>
 using namespace std;
+struct Edge {
+    long long to;
+    long long cost;
+};
+using Graph = vector<vector<Edge>>;
+using P = pair<long, int>;
+const long long INF = 1LL << 60;
+/* dijkstra(G,s,dis)
+    入力：グラフ G, 開始点 s, 距離を格納する dis
+    計算量：O(|E|log|V|)
+    副作用：dis が書き換えられる
+*/
 
-#define DEBUG 1     //デバッグモード　0:OFF 1:ON
-
-#if DEBUG
-#define DBG(s, i)   cout << "DEBUG " << s << ":" << i << endl;
-#define DBGV(s, v)                              \
-    cout << "DEBUG " << s << ": " ;             \
-    for (int nv : v)                            \
-    {                                           \
-        cout << nv <<" ";                       \
-    }                                           \
-    cout << endl;
-#else
-#define dbg(s, i) /* ... */
-#define dbgv(s, i)     /* ... */
-#endif
-
-using Graph = vector<vector<int>>;
-
-int main()
-{
-    vector<int> r = {3, 5, 7, 9};
-    DBG("Now", 6);
-    DBGV("aa", r);
-
+void dijkstra(const Graph &G, int s, vector<long long> &dis,
+              vector<int> &prev) {
+    int N = G.size();
+    dis.resize(N, INF);
+    prev.resize(N, -1);  // 初期化
+    priority_queue<P, vector<P>, greater<P>> pq;
+    dis[s] = 0;
+    pq.emplace(dis[s], s);
+    while (!pq.empty()) {
+        P p = pq.top();
+        pq.pop();
+        int v = p.second;
+        if (dis[v] < p.first) {
+            continue;
+        }
+        for (auto &e : G[v]) {
+            if (dis[e.to] > dis[v] + e.cost) {
+                dis[e.to] = dis[v] + e.cost;
+                prev[e.to] = v;  // 頂点 v を通って e.to にたどり着いた
+                pq.emplace(dis[e.to], e.to);
+            }
+        }
+    }
+}
+/* get_path(prev, t)
+    入力：dijkstra で得た prev, ゴール t
+    出力： t への最短路のパス
+*/
+vector<int> get_path(const vector<int> &prev, int t) {
+    vector<int> path;
+    for (int cur = t; cur != -1; cur = prev[cur]) {
+        path.push_back(cur);
+    }
+    reverse(path.begin(), path.end());  // 逆順なのでひっくり返す
+    return path;
 }
