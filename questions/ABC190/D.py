@@ -9,11 +9,23 @@ def DBG(s):
         print(s)
 
 
-# int型で受け取るとき
+
+#int型で受け取るとき
 N = int(input())
 
+N=abs(N)*2
 
-if N % 2 == 0:
-    print("White")
-else:
-    print("Black")
+yaku=0
+
+
+for i in range(1,N+1):
+    if N%i==0:
+        yaku+=1
+    if i*i>N:
+        break
+
+print(yaku)
+
+
+
+

@@ -18,12 +18,7 @@
 
 using namespace std;
 
-
-
-#define DEBUG 1  //デバッグモード　0:OFF 1:ON
-
-
-
+#define DEBUG 1 //デバッグモード　0:OFF 1:ON
 
 typedef long long ll;
 typedef vector<int> VI;
@@ -36,20 +31,26 @@ typedef pair<int, int> P;
 typedef pair<ll, ll> PL;
 
 template <typename T>
-void chmin(T &a, T b) {
-    if (a > b) a = b;
+void chmin(T &a, T b)
+{
+    if (a > b)
+        a = b;
 }
 template <typename T>
-void chmax(T &a, T b) {
-    if (a < b) a = b;
+void chmax(T &a, T b)
+{
+    if (a < b)
+        a = b;
 }
 
-int in() {
+int in()
+{
     int x;
     cin >> x;
     return x;
 }
-ll lin() {
+ll lin()
+{
     ll x;
     cin >> x;
     return x;
@@ -70,30 +71,32 @@ ll lin() {
 #define VI_UNSORT(v) sort(data.begin(), data.end(), greater<int>())
 #define VVI_INI(v, a, b, n) v.resize(a + 1, vector<int>(b + 1, n))
 
-
-
 #if DEBUG
 #define DBG(s) cout << "DEBUG " << s << endl
 //#define DBG(s, i) cout << "DEBUG " << s << i << endl;
 #define DBGV(s, v)         \
     cout << "DEBUG " << s; \
-    for (int nv : v) {     \
+    for (int nv : v)       \
+    {                      \
         cout << nv << " "; \
     }                      \
     cout << endl;
-#define DBGVV(s, v, w)                                 \
+#define DBGVV(s, v, w)                              \
     cout << "DEBUG " << s << endl;                  \
     {                                               \
         int loopcount = 0;                          \
         int count = 0;                              \
         cout << "      ";                           \
-        for (VI nv : v) {                           \
+        for (VI nv : v)                             \
+        {                                           \
             cout << setw(w) << count++;             \
         }                                           \
         cout << endl;                               \
-        for (VI nv : v) {                           \
+        for (VI nv : v)                             \
+        {                                           \
             cout << setw(w) << loopcount++ << ": "; \
-            for (int nnv : nv) {                    \
+            for (int nnv : nv)                      \
+            {                                       \
                 cout << setw(w) << nnv;             \
             }                                       \
             cout << endl;                           \
@@ -105,7 +108,6 @@ ll lin() {
 #define DBGVV(s, i) /* ... */
 #endif
 
-
 const int INF = 1 << 30;
 
 VI A, B;
@@ -113,29 +115,33 @@ VVI dp;
 
 /* main */
 
-int main() {
-    int N=in();
+int main()
+{
+    int N = in();
 
-    VI_INI(A,N,0);
-    VI_INI(B,N,0);
-    FOR(i,1,N){
-        A[i]=in();
+    VI_INI(A, N, 0);
+    VI_INI(B, N, 0);
+    FOR(i, 1, N)
+    {
+        A[i] = in();
     }
-    FOR(i,1,N){
-        B[i]=in();
+    FOR(i, 1, N)
+    {
+        B[i] = in();
     }
-    int ans=0;
-    FOR(i,1,N){
-        ans+=A[i]*B[i];
+    int ans = 0;
+    FOR(i, 1, N)
+    {
+        ans += A[i] * B[i];
     }
-    if(ans==0){
+    if (ans == 0)
+    {
         O("Yes");
-    }else{
+    }
+    else
+    {
         O("No");
     }
-    int a = 99;
-    int b = 100;
 
-
-        return 0;
+    return 0;
 }

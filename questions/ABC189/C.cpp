@@ -108,34 +108,49 @@ ll lin() {
 
 const int INF = 1 << 30;
 
-VI A, B;
+VI rs, cs;
 VVI dp;
 
 /* main */
+int64_t largest_rectangle(vector< T > height)
+{
+  stack< int > st;
+  height.push_back(0);
+  vector< int > left(height.size());
+  int64_t ret = 0;
+  for(int i = 0; i < height.size(); i++) {
+    while(!st.empty() && height[st.top()] >= height[i]) {
+      ret = max(ret, (int64_t) (i - left[st.top()] - 1) * height[st.top()]);
+      st.pop();
+    }
+    left[i] = st.empty() ? -1 : st.top();
+    st.emplace(i);
+  }
+  return (ret);
+}
+
+VI h;
 
 int main() {
-    int N=in();
+  int N;
+  cin >> N;
+  FOR(i,0,N-1){
+      h[i] = in();
+  }
+    stack< int > st;
+  height.push_back(0);
+  vector< int > left(height.size());
+  int64_t ret = 0;
+  for(int i = 0; i < height.size(); i++) {
+    while(!st.empty() && height[st.top()] >= height[i]) {
+      ret = max(ret, (int64_t) (i - left[st.top()] - 1) * height[st.top()]);
+      st.pop();
+    }
+    left[i] = st.empty() ? -1 : st.top();
+    st.emplace(i);
+  }
 
-    VI_INI(A,N,0);
-    VI_INI(B,N,0);
-    FOR(i,1,N){
-        A[i]=in();
-    }
-    FOR(i,1,N){
-        B[i]=in();
-    }
-    int ans=0;
-    FOR(i,1,N){
-        ans+=A[i]*B[i];
-    }
-    if(ans==0){
-        O("Yes");
-    }else{
-        O("No");
-    }
-    int a = 99;
-    int b = 100;
+  O(ret);
 
-
-        return 0;
+  return 0;
 }

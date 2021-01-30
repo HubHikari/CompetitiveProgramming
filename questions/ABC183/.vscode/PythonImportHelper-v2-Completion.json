@@ -1,0 +1,252 @@
+[
+    {
+        "label": "permutations",
+        "importPath": "itertools",
+        "description": "itertools",
+        "isExtraImport": true,
+        "detail": "itertools",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "itemgetter",
+        "importPath": "operator",
+        "description": "operator",
+        "isExtraImport": true,
+        "detail": "operator",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "A",
+        "description": "A",
+        "peekOfCode": "x = int(input())\nif x >= 0:\n    print(x)\nelse:\n    print(0)",
+        "detail": "A",
+        "documentation": {}
+    },
+    {
+        "label": "a,b,c,d",
+        "kind": 5,
+        "importPath": "B",
+        "description": "B",
+        "peekOfCode": "a,b,c,d = map(int, input().split())\nprint(a-b*(a-c)/(b+d))",
+        "detail": "B",
+        "documentation": {}
+    },
+    {
+        "label": "DBG",
+        "kind": 2,
+        "importPath": "C",
+        "description": "C",
+        "peekOfCode": "def DBG(s):\n    if DEBUG_MODE == 1:\n        print(\"DEBUG: \")\n        print(s)\n#(N,M)行列データ\nN,K = map(int, input().split())\nT = [list(map(int, input().split(\" \"))) for i in range(N)]\nDBG(T)\nlist = [1, 2, 3, 4, 5, 6, 7, 8]\na=[]",
+        "detail": "C",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG_MODE",
+        "kind": 5,
+        "importPath": "C",
+        "description": "C",
+        "peekOfCode": "DEBUG_MODE = 1\ndef DBG(s):\n    if DEBUG_MODE == 1:\n        print(\"DEBUG: \")\n        print(s)\n#(N,M)行列データ\nN,K = map(int, input().split())\nT = [list(map(int, input().split(\" \"))) for i in range(N)]\nDBG(T)\nlist = [1, 2, 3, 4, 5, 6, 7, 8]",
+        "detail": "C",
+        "documentation": {}
+    },
+    {
+        "label": "N,K",
+        "kind": 5,
+        "importPath": "C",
+        "description": "C",
+        "peekOfCode": "N,K = map(int, input().split())\nT = [list(map(int, input().split(\" \"))) for i in range(N)]\nDBG(T)\nlist = [1, 2, 3, 4, 5, 6, 7, 8]\na=[]\nfor i in range(N-1):\n    a.append(list[i])\nper = permutations(a, N - 1)\nans = 0\nfor i in per:",
+        "detail": "C",
+        "documentation": {}
+    },
+    {
+        "label": "T",
+        "kind": 5,
+        "importPath": "C",
+        "description": "C",
+        "peekOfCode": "T = [list(map(int, input().split(\" \"))) for i in range(N)]\nDBG(T)\nlist = [1, 2, 3, 4, 5, 6, 7, 8]\na=[]\nfor i in range(N-1):\n    a.append(list[i])\nper = permutations(a, N - 1)\nans = 0\nfor i in per:\n    dist = 0",
+        "detail": "C",
+        "documentation": {}
+    },
+    {
+        "label": "list",
+        "kind": 5,
+        "importPath": "C",
+        "description": "C",
+        "peekOfCode": "list = [1, 2, 3, 4, 5, 6, 7, 8]\na=[]\nfor i in range(N-1):\n    a.append(list[i])\nper = permutations(a, N - 1)\nans = 0\nfor i in per:\n    dist = 0\n    i_add = (0,)+i+(0,)\n    DBG(i_add)",
+        "detail": "C",
+        "documentation": {}
+    },
+    {
+        "label": "per",
+        "kind": 5,
+        "importPath": "C",
+        "description": "C",
+        "peekOfCode": "per = permutations(a, N - 1)\nans = 0\nfor i in per:\n    dist = 0\n    i_add = (0,)+i+(0,)\n    DBG(i_add)\n    for j in range(1, N+1):\n        dist = dist + T[i_add[j - 1]][i_add[j]]\n        if dist == K:\n            ans=ans+1",
+        "detail": "C",
+        "documentation": {}
+    },
+    {
+        "label": "ans",
+        "kind": 5,
+        "importPath": "C",
+        "description": "C",
+        "peekOfCode": "ans = 0\nfor i in per:\n    dist = 0\n    i_add = (0,)+i+(0,)\n    DBG(i_add)\n    for j in range(1, N+1):\n        dist = dist + T[i_add[j - 1]][i_add[j]]\n        if dist == K:\n            ans=ans+1\nprint(ans)",
+        "detail": "C",
+        "documentation": {}
+    },
+    {
+        "label": "lis",
+        "kind": 5,
+        "importPath": "D",
+        "description": "D",
+        "peekOfCode": "lis = []\nfor i in range(N):\n    S, T, P = map(int, input().split())\n    lis.append((S, P))\n    lis.append((T, -1*P))\nlis.sort()\nprint(lis)\nnow = 0\nfor x, y in lis:\n    now += y",
+        "detail": "D",
+        "documentation": {}
+    },
+    {
+        "label": "now",
+        "kind": 5,
+        "importPath": "D",
+        "description": "D",
+        "peekOfCode": "now = 0\nfor x, y in lis:\n    now += y\n    if now > W:\n        print(\"No\")\n        sys.exit()\nprint(\"Yes\")\n'''\nfrom operator import itemgetter\n#列に変数が並ぶとき",
+        "detail": "D",
+        "documentation": {}
+    },
+    {
+        "label": "xy",
+        "kind": 5,
+        "importPath": "D",
+        "description": "D",
+        "peekOfCode": "xy = [map(int, input().split()) for _ in range(N)]\nS, T,P= [list(i) for i in zip(*xy)]\nevent=[]\nfor i in range(0, N):\n    event.append([S[i], P[i]])\n    event.append([T[i], -P[i]])\nevent.sort()\n#print(event)\nwater = 0\nj=0",
+        "detail": "D",
+        "documentation": {}
+    },
+    {
+        "label": "water",
+        "kind": 5,
+        "importPath": "D",
+        "description": "D",
+        "peekOfCode": "water = 0\nj=0\nwhile j<len(event):\n    water = water + event[j][1]\n    if j < len(event)-1:\n        if event[j][0] == event[j + 1][0]:\n            j = j + 1\n            continue\n    #print(water)\n    j = j + 1",
+        "detail": "D",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "s = input() \n#int型で受け取るとき\ns = int(input()) \n#float型　(小数)で受け取るとき\ns = float(input())\n#list型で受け取るとき\ns = input().split()\nprint(s)\nprint(s[0])\nprint(s[0][0])",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "s = int(input()) \n#float型　(小数)で受け取るとき\ns = float(input())\n#list型で受け取るとき\ns = input().split()\nprint(s)\nprint(s[0])\nprint(s[0][0])\n#文字列として受け取るとき\nA, B, C = input().split()",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "s = float(input())\n#list型で受け取るとき\ns = input().split()\nprint(s)\nprint(s[0])\nprint(s[0][0])\n#文字列として受け取るとき\nA, B, C = input().split()\nprint(A)    \nprint(A,B,C)",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "s = input().split()\nprint(s)\nprint(s[0])\nprint(s[0][0])\n#文字列として受け取るとき\nA, B, C = input().split()\nprint(A)    \nprint(A,B,C)\n#入力変数が整数の場合\nA, B = map(int, input().split())",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "l",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "l = list(map(int, input().split()))\nprint(l)\n#文字列と数字の複合\nN, S = map(str, input().split())\n#(N,1)行列データ\nN, M = map(int, input().split())\nA = []\nfor _ in range(M):\n    A.append(int(input())\nprint(A)",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "A",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "A = []\nfor _ in range(M):\n    A.append(int(input())\nprint(A)\n#(N,M)行列データ\nN = int(input())\nx = list(map(int, input().split()))\ny = list(map(int, input().split()))\nprint(x)\n#列に変数が並ぶとき",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "N",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "N = int(input())\nx = list(map(int, input().split()))\ny = list(map(int, input().split()))\nprint(x)\n#列に変数が並ぶとき\nN = int(input())\nxy = [map(int, input().split()) for _ in range(N)]\nx, y = [list(i) for i in zip(*xy)]\nprint(x)\nprint(x[1]+y[1])",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "x = list(map(int, input().split()))\ny = list(map(int, input().split()))\nprint(x)\n#列に変数が並ぶとき\nN = int(input())\nxy = [map(int, input().split()) for _ in range(N)]\nx, y = [list(i) for i in zip(*xy)]\nprint(x)\nprint(x[1]+y[1])",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "y",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "y = list(map(int, input().split()))\nprint(x)\n#列に変数が並ぶとき\nN = int(input())\nxy = [map(int, input().split()) for _ in range(N)]\nx, y = [list(i) for i in zip(*xy)]\nprint(x)\nprint(x[1]+y[1])",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "N",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "N = int(input())\nxy = [map(int, input().split()) for _ in range(N)]\nx, y = [list(i) for i in zip(*xy)]\nprint(x)\nprint(x[1]+y[1])",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "xy",
+        "kind": 5,
+        "importPath": "E",
+        "description": "E",
+        "peekOfCode": "xy = [map(int, input().split()) for _ in range(N)]\nx, y = [list(i) for i in zip(*xy)]\nprint(x)\nprint(x[1]+y[1])",
+        "detail": "E",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "F",
+        "description": "F",
+        "peekOfCode": "x = int(input()) \nif x >= 0:\n    print(x)\nelse:\n    print(0)",
+        "detail": "F",
+        "documentation": {}
+    }
+]

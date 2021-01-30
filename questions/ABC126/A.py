@@ -23,10 +23,6 @@ qMax = 0
 ans = 0
 nowMax = 0
 
-
-
-
-
 for i in range(1, N + 1):
     p = A[i]
     q = B[i]

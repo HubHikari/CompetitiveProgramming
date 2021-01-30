@@ -9,11 +9,11 @@ def DBG(s):
         print(s)
 
 
-# int型で受け取るとき
+#int型で受け取るとき
 N = int(input())
 
 
-if N % 2 == 0:
-    print("White")
-else:
-    print("Black")
+#(N,1)行列データ
+A = [0, ] + list(map(int, input().split()))
+DBG(A)
+

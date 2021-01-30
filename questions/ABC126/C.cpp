@@ -20,7 +20,7 @@ using namespace std;
 
 
 
-#define DEBUG 1  //デバッグモード　0:OFF 1:ON
+#define DEBUG 0  //デバッグモード　0:OFF 1:ON
 
 
 
@@ -108,34 +108,51 @@ ll lin() {
 
 const int INF = 1 << 30;
 
-VI A, B;
-VVI dp;
+VI A;
+VI winner;
 
 /* main */
 
 int main() {
     int N=in();
-
-    VI_INI(A,N,0);
-    VI_INI(B,N,0);
-    FOR(i,1,N){
+    int num=1<<N;
+    VI_INI(A,num,0);
+    VI_INI(winner,num,1);
+    FOR(i,1,num){
         A[i]=in();
     }
-    FOR(i,1,N){
-        B[i]=in();
+    FOR(j,1,N){
+        FOR(i,1,num){
+            int a=0;
+            int b=0;
+            if(winner[i]==1){
+                a=i;
+                i++;
+                while(winner[i]!=1){
+                    i++;
+                }
+                if(A[i]>A[a]){
+                    winner[a]=0;
+                    if(j==N){
+                        O(a);
+                    }
+                }else{
+                    winner[i]=0;
+                    if(j==N){
+                        O(i);
+                    }
+                }
+                
+            }
+        }
+        DBGV("a",A);
+        DBGV("w",winner);
+        
     }
-    int ans=0;
-    FOR(i,1,N){
-        ans+=A[i]*B[i];
-    }
-    if(ans==0){
-        O("Yes");
-    }else{
-        O("No");
-    }
-    int a = 99;
-    int b = 100;
 
 
-        return 0;
+
+
+
+    return 0;
 }

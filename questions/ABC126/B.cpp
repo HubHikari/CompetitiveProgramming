@@ -133,9 +133,6 @@ int main() {
     }else{
         O("No");
     }
-    int a = 99;
-    int b = 100;
 
-
-        return 0;
+    return 0;
 }

@@ -108,34 +108,68 @@ ll lin() {
 
 const int INF = 1 << 30;
 
-VI A, B;
+VI a,b,c;
 VVI dp;
 
 /* main */
 
 int main() {
-    int N=in();
+    int N,C;
+    N=in();
+    C=in();
+    VI_INI(a,N,0);
+    VI_INI(b,N,0);
+    VI_INI(c,N,0);
 
-    VI_INI(A,N,0);
-    VI_INI(B,N,0);
     FOR(i,1,N){
-        A[i]=in();
+        a[i]=in();
+        b[i]=in();
+        c[i]=in();
     }
+    DBG(N);
+    DBG(C);
+    DBGV("a",a);
+    DBGV("b",b);
+    DBGV("c",c);
+
+    vector<pair<int,int>> va,vb;
     FOR(i,1,N){
-        B[i]=in();
+        va.push_back({ a[i],c[i] });
+        vb.push_back({ b[i],c[i] });
     }
+    sort(va.begin(), va.end());
+    sort(vb.begin(), vb.end());
+    
     int ans=0;
-    FOR(i,1,N){
-        ans+=A[i]*B[i];
-    }
-    if(ans==0){
-        O("Yes");
-    }else{
-        O("No");
-    }
-    int a = 99;
-    int b = 100;
+    int nowprice=0;
+
+    int as=1;
+    int bs=1;
+    int lastday=0;
+    do{
+        if(va[as].first>vb[bs].first){
+            ans+=nowprice*(va[as].first-lastday);
+            lastday=va[as].first;
+            nowprice+=va[as].second;
+            as++;
+        }else if(va[as].first<vb[bs].first){
+            ans+=nowprice*(vb[bs].first-lastday);
+            lastday=vb[bs].first;
+            nowprice-=vb[bs].second;
+            bs++;
+        }else{
+            ans+=nowprice*(vb[bs].first-lastday);
+            lastday=vb[bs].first;
+            nowprice+=va[as].second-vb[bs].second;
+            bs++;
+            as++;
+        }
+
+    }while(bs<vb[N].first);
+    O(ans);
+    
 
 
-        return 0;
+
+    return 0;
 }

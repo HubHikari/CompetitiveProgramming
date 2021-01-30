@@ -9,11 +9,12 @@ def DBG(s):
         print(s)
 
 
-# int型で受け取るとき
-N = int(input())
+# 入力変数が整数の場合
+A, B = map(int, input().split())
+
+ans = (2*A+100)-B
+
+print(ans)
 
 
-if N % 2 == 0:
-    print("White")
-else:
-    print("Black")
+A = A+2

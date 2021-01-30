@@ -9,11 +9,13 @@ def DBG(s):
         print(s)
 
 
-# int型で受け取るとき
-N = int(input())
+#str型で受け取るとき
+s = input()
 
 
-if N % 2 == 0:
-    print("White")
-else:
-    print("Black")
+if s[0]==s[1]:
+    if s[1]==s[2]:
+        print("Won")
+        exit()
+print("Lost")
+

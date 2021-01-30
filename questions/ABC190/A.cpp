@@ -108,34 +108,41 @@ ll lin() {
 
 const int INF = 1 << 30;
 
-VI A, B;
+VI rs, cs;
 VVI dp;
 
 /* main */
 
 int main() {
-    int N=in();
+    int n=in();
+    VI_INI(rs, n, 0);
+    VI_INI(cs, n, 0);
+    VVI_INI(dp, n, n, 0);
 
-    VI_INI(A,N,0);
-    VI_INI(B,N,0);
-    FOR(i,1,N){
-        A[i]=in();
+    FOR(i, 0, n - 1) { 
+        I(rs[i]);
+        I(cs[i]);
     }
-    FOR(i,1,N){
-        B[i]=in();
-    }
-    int ans=0;
-    FOR(i,1,N){
-        ans+=A[i]*B[i];
-    }
-    if(ans==0){
-        O("Yes");
-    }else{
-        O("No");
-    }
-    int a = 99;
-    int b = 100;
 
+    FOR(l,1,n-1){
+        for (int i0 = 0, i1 = l; i1 < n; i0++, i1++) {
+            dp[i0][i1] = INF;
+            FOR(j,i0,i1-1){
+                dp[i0][i1] = min(dp[i0][i1] ,rs[i0] * cs[j] * cs[i1] +
+                                 dp[i0][j] + dp[j + 1][i1]);
+                DBG(rs[i0]);
+                DBG(cs[j]);
+                DBG(cs[i1]);
+                DBG(rs[i0] * cs[j] * cs[i1]);
+                DBG(dp[i0][j]);
+                DBG(dp[j + 1][i1]);
+                DBGVV("dp:", dp, 6);
+            }
 
-        return 0;
+        }
+        
+    }
+    DBGVV("dp:", dp, 6);
+    O(dp[0][n - 1]);
+    return 0;
 }

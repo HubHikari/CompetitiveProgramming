@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "utility": "cpp",
-        "cstring": "cpp"
-    }
+        "cstring": "cpp",
+    },
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+    },
 }

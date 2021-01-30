@@ -108,34 +108,37 @@ ll lin() {
 
 const int INF = 1 << 30;
 
-VI A, B;
+VI rs, cs;
 VVI dp;
 
 /* main */
 
 int main() {
-    int N=in();
-
-    VI_INI(A,N,0);
-    VI_INI(B,N,0);
-    FOR(i,1,N){
-        A[i]=in();
-    }
-    FOR(i,1,N){
-        B[i]=in();
+    int X,Y;
+    X=in();
+    Y=in();
+    if(X>Y){
+        O(X-Y);
+        exit(0);
     }
     int ans=0;
-    FOR(i,1,N){
-        ans+=A[i]*B[i];
+
+    while(Y>2*X){
+        if(Y%2==1){
+            Y--;
+            ans++;
+        }
+        Y/=2;
+        ans++;
     }
-    if(ans==0){
-        O("Yes");
+    if(Y>X*1.5){
+        ans+=2*X-Y+1;
     }else{
-        O("No");
+        ans+=Y-X;
     }
-    int a = 99;
-    int b = 100;
+    O(ans);
 
 
-        return 0;
+
+    return 0;
 }
