@@ -2,7 +2,8 @@ from itertools import permutations
 
 DEBUG_MODE = 1
 
-MAX_NUM=2**63-1
+MAX_NUM = 2**63-1
+
 
 def DBG(s):
     if DEBUG_MODE == 1:
@@ -11,18 +12,18 @@ def DBG(s):
 
 
 #str型で受け取るとき
-s = input()
+N = input()
 #int型で受け取るとき
-s = int(input())
+N = int(input())
 #float型　(小数)で受け取るとき
-s = float(input())
+N = float(input())
 
 
 #list型で受け取るとき
-s = ["", ] + input().split()
-DBG(s)
-DBG(s[1])
-DBG(s[1][0])
+A = ["", ] + input().split()
+DBG(A)
+DBG(A[1])
+DBG(A[1][0])
 
 
 #文字列として受け取るとき
@@ -38,8 +39,8 @@ DBG(B)
 
 
 #入力変数の数がN個の場合
-l = [0, ] + list(map(int, input().split()))
-DBG(l)
+X = [0, ] + list(map(int, input().split()))
+DBG(X)
 
 
 #文字列と数字の複合
@@ -53,17 +54,17 @@ DBG(A)
 
 #(N,M)行列データ
 N, M = map(int, input().split())
-d = [[0] * (N + 1)] + [[0, ] + list(map(int, input().split(" ")))
+K = [[0] * (N + 1)] + [[0, ] + list(map(int, input().split(" ")))
                        for i in range(N)]
-DBG(d)
-DBG(d[1][1])
+DBG(K)
+DBG(K[1][1])
 
 
 #列に変数が並ぶとき
 N, M = map(int, input().split())
 xy = [map(int, input().split()) for _ in range(N)]
 x, y = [list(i) for i in zip(*xy)]
-x = [0, ] + x
-y = [0, ] + y
-DBG(x)
-DBG(x[1]+y[1])
+X = [0, ] + x
+Y = [0, ] + y
+DBG(X)
+DBG(Y[1]+Y[1])
